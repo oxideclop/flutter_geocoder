@@ -70,7 +70,8 @@ class GoogleGeocoding implements Geocoding {
 
     result["coordinates"] = _convertCoordinates(data["geometry"]);
     result["addressLine"] = data["formatted_address"];
-
+    result["placeId"] = data["place_id"];
+    
     var addressComponents = data["address_components"];
 
     addressComponents.forEach((item) {

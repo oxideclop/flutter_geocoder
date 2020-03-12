@@ -63,12 +63,16 @@ class Address {
   /// The sub-thoroughfare name of the address
   final String subThoroughfare;
 
-  Address({this.coordinates, this.addressLine, this.countryName, this.countryCode, this.featureName, this.postalCode, this.adminArea, this.subAdminArea, this.locality, this.subLocality, this.thoroughfare, this.subThoroughfare});
+  /// The place id of the address
+  final String placeId;
+
+  Address({this.placeId,this.coordinates, this.addressLine, this.countryName, this.countryCode, this.featureName, this.postalCode, this.adminArea, this.subAdminArea, this.locality, this.subLocality, this.thoroughfare, this.subThoroughfare});
 
   /// Creates an address from a map containing its properties.
   Address.fromMap(Map map) :
         this.coordinates = new Coordinates.fromMap(map["coordinates"]),
         this.addressLine = map["addressLine"],
+        this.placeId = map["placeId"],
         this.countryName = map["countryName"],
         this.countryCode = map["countryCode"],
         this.featureName = map["featureName"],
@@ -84,6 +88,7 @@ class Address {
   Map toMap() => {
     "coordinates": this.coordinates.toMap(),
     "addressLine": this.addressLine,
+    "placeId":this.placeId,
     "countryName": this.countryName,
     "countryCode": this.countryCode,
     "featureName": this.featureName,
